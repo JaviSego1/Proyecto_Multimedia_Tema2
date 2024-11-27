@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:background="@color/colorFondo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top|center_horizontal"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:background="@color/morado"
+        android:text="Número de teléfono de SOS"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/zonaTelefono"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/morado"
+            android:enabled="false"
+            android:inputType="phone"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/editarTelefono"
+            android:layout_width="28dp"
+            android:layout_height="45dp"
+            android:src="@drawable/editar" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonLlamar"
+        android:layout_width="159dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="10dp"
+        android:text="Llamar" />
+
+    <Button
+        android:id="@+id/buttonVolver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver al menú principal" />
+
+</LinearLayout>

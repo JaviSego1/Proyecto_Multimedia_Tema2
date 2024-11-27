@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorFondo"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/myImageView"
+        android:layout_width="199dp"
+        android:layout_height="198dp"
+        android:src="@drawable/ordenador" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonLlamada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/morado"
+            android:text="Llamada"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/buttonCorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Correo"
+            android:textSize="18sp"
+            android:backgroundTint="@color/morado" />
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="1"
+        android:columnCount="2"
+        android:paddingTop="16dp">
+
+        <Button
+            android:id="@+id/buttonUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Universidad de Jaen"
+            android:textSize="18sp"
+            android:backgroundTint="@color/morado"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/buttonAlarma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alarma"
+            android:textSize="18sp"
+            android:backgroundTint="@color/morado" />
+    </GridLayout>
+</LinearLayout>
