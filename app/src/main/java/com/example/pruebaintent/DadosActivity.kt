@@ -23,24 +23,35 @@ class DadosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDadosBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         initEvent()
 
-        val duracionOptions = arrayOf("3 segundos", "6 segundos", "10 segundos")
-        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, duracionOptions)
+        // Opciones para la duración
+        val duracionOptions = listOf("3 segundos", "6 segundos", "10 segundos")
+
+        // Configuración del adaptador del Spinner
+        val spinnerAdapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            duracionOptions
+        )
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerDuracion.adapter = spinnerAdapter
 
+        // Evento de selección del Spinner
         binding.spinnerDuracion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 duracionTirada = when (position) {
                     0 -> 3000  // 3 segundos
                     1 -> 6000  // 6 segundos
-                    2 -> 10000  // 10 segundos
-                    else -> 3000  // Default
+                    2 -> 10000 // 10 segundos
+                    else -> 3000 // Default
                 }
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {}
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                duracionTirada = 3000 // Valor por defecto si no se selecciona nada
+            }
         }
 
         binding.buttonVolver.setOnClickListener {
