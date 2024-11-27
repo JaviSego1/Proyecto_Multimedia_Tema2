@@ -50,8 +50,11 @@ class DadosActivity : AppCompatActivity() {
 
     private fun initEvent() {
         binding.txtResultado.visibility = View.INVISIBLE
+        binding.txtFraseMotivadora.visibility = View.INVISIBLE  // Invisible initially
+
         binding.imageButton.setOnClickListener {
             binding.txtResultado.visibility = View.VISIBLE
+            binding.txtFraseMotivadora.visibility = View.VISIBLE  // Show the motivational phrase
             game()
         }
     }
@@ -116,5 +119,28 @@ class DadosActivity : AppCompatActivity() {
     private fun viewResult() {
         binding.txtResultado.text = sum.toString()
         println(sum)
+
+        // Mostrar frase motivadora según el número obtenido
+        val frase = when (sum) {
+            3 -> "¡A veces el inicio es difícil, pero lo lograrás!"
+            4 -> "¡Cada paso que das te acerca más a tu meta!"
+            5 -> "¡No te detengas, el camino ya está trazado!"
+            6 -> "¡La suerte está contigo, sigue adelante!"
+            7 -> "¡Un pequeño avance es un gran paso hacia el éxito!"
+            8 -> "¡Lo estás haciendo bien, cada esfuerzo cuenta!"
+            9 -> "¡La victoria está cerca, no pares ahora!"
+            10 -> "¡Eres fuerte, lo estás logrando!"
+            11 -> "¡Sigue luchando, los buenos resultados llegarán!"
+            12 -> "¡Tu perseverancia está dando frutos!"
+            13 -> "¡No hay límites, solo oportunidades!"
+            14 -> "¡Sigue adelante, el éxito está al alcance!"
+            15 -> "¡Cada intento te acerca más a la victoria!"
+            16 -> "¡Con cada paso, te estás acercando a tus sueños!"
+            17 -> "¡No hay nada que te detenga, sigue adelante!"
+            18 -> "¡Lo has logrado, tu esfuerzo ha sido recompensado!"
+            else -> "¡Sigue así, nunca pares de intentarlo!"
+        }
+
+        binding.txtFraseMotivadora.text = frase
     }
 }
