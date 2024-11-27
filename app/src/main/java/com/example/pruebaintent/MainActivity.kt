@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
 
         val enlace = "https://www.ujaen.es/"
 
+        binding.buttonChistes.setOnClickListener{
+            startActivity(Intent(this, ChistesActivity::class.java))
+        }
+
         binding.buttonDados.setOnClickListener{
             startActivity(Intent(this, DadosActivity::class.java))
         }
@@ -33,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         binding.buttonLlamada.setOnClickListener{
             startActivity(Intent(this, ConfActivity::class.java))
         }
-
 
         binding.buttonUrl.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(enlace))

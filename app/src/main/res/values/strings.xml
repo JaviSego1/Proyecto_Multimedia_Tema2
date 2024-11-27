@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PruebaIntent</string>
+    <string name="describe">Esta es mi aplicacion de chistes, que reproduce aleatoriamente 10 chistes</string>
 </resources>

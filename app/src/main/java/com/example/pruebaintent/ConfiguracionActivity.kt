@@ -1,4 +1,5 @@
 package com.example.pruebaintent
+
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast

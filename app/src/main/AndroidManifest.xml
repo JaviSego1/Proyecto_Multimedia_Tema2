@@ -30,6 +30,9 @@
             android:name=".ConfiguracionActivity"
             android:exported="false"/>
         <activity
+            android:name=".ChistesActivity"
+            android:exported="false"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

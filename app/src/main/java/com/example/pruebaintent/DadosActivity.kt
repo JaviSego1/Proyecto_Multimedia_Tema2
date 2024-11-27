@@ -26,10 +26,8 @@ class DadosActivity : AppCompatActivity() {
 
         initEvent()
 
-        // Opciones para la duración
         val duracionOptions = listOf("3 segundos", "6 segundos", "10 segundos")
 
-        // Configuración del adaptador del Spinner
         val spinnerAdapter = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
@@ -42,15 +40,15 @@ class DadosActivity : AppCompatActivity() {
         binding.spinnerDuracion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 duracionTirada = when (position) {
-                    0 -> 3000  // 3 segundos
-                    1 -> 6000  // 6 segundos
-                    2 -> 10000 // 10 segundos
-                    else -> 3000 // Default
+                    0 -> 3000
+                    1 -> 6000
+                    2 -> 10000
+                    else -> 3000
                 }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                duracionTirada = 3000 // Valor por defecto si no se selecciona nada
+                duracionTirada = 3000
             }
         }
 
@@ -61,11 +59,11 @@ class DadosActivity : AppCompatActivity() {
 
     private fun initEvent() {
         binding.txtResultado.visibility = View.INVISIBLE
-        binding.txtFraseMotivadora.visibility = View.INVISIBLE  // Invisible initially
+        binding.txtFraseMotivadora.visibility = View.INVISIBLE
 
         binding.imageButton.setOnClickListener {
             binding.txtResultado.visibility = View.VISIBLE
-            binding.txtFraseMotivadora.visibility = View.VISIBLE  // Show the motivational phrase
+            binding.txtFraseMotivadora.visibility = View.VISIBLE
             game()
         }
     }
@@ -104,14 +102,12 @@ class DadosActivity : AppCompatActivity() {
             binding.imagviewDado3
         )
 
-        sum = numDados.sum()  // Nos quedamos con la suma actual
+        sum = numDados.sum()
         for (i in 0..2) {
             selectView(imagViews[i], numDados[i])
 
-            // Cargar la animación de rotación
             val rotateAnim = AnimationUtils.loadAnimation(this, R.anim.rotate_dice)
 
-            // Aplicar la animación al ImageView
             imagViews[i].startAnimation(rotateAnim)
         }
     }
@@ -131,7 +127,6 @@ class DadosActivity : AppCompatActivity() {
         binding.txtResultado.text = sum.toString()
         println(sum)
 
-        // Mostrar frase motivadora según el número obtenido
         val frase = when (sum) {
             3 -> "¡A veces el inicio es difícil, pero lo lograrás!"
             4 -> "¡Cada paso que das te acerca más a tu meta!"
@@ -149,9 +144,8 @@ class DadosActivity : AppCompatActivity() {
             16 -> "¡Con cada paso, te estás acercando a tus sueños!"
             17 -> "¡No hay nada que te detenga, sigue adelante!"
             18 -> "¡Lo has logrado, tu esfuerzo ha sido recompensado!"
-            else -> "¡Sigue así, nunca pares de intentarlo!"
+            else -> "¡Intentalo!"
         }
-
         binding.txtFraseMotivadora.text = frase
     }
 }
