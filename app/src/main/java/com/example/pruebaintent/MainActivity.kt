@@ -4,42 +4,43 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.AlarmClock
-import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pruebaintent.databinding.ActivityMainBinding
 import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var buttonLlamada: Button
-    private lateinit var buttonAlarma: Button
-    private lateinit var buttonUrl: Button
-    private lateinit var buttonCorreo: Button
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val enlace = "https://www.ujaen.es/"
-        buttonLlamada = findViewById(R.id.buttonLlamada)
-        buttonAlarma = findViewById(R.id.buttonAlarma)
-        buttonUrl = findViewById(R.id.buttonUrl)
-        buttonCorreo = findViewById(R.id.buttonCorreo)
 
+        binding.buttonDados.setOnClickListener{
+            startActivity(Intent(this, DadosActivity::class.java))
+        }
 
-        buttonLlamada.setOnClickListener{
+        binding.buttonConfiguracion.setOnClickListener{
+            startActivity(Intent(this, ConfiguracionActivity::class.java))
+        }
+
+        binding.buttonLlamada.setOnClickListener{
             startActivity(Intent(this, ConfActivity::class.java))
         }
 
 
-        buttonUrl.setOnClickListener {
+        binding.buttonUrl.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(enlace))
             startActivity(intent)
         }
 
-        buttonAlarma.setOnClickListener {
+        binding.buttonAlarma.setOnClickListener {
             val calendario = Calendar.getInstance()
             calendario.add(Calendar.MINUTE, 2)
 
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        buttonCorreo.setOnClickListener {
+        binding.buttonCorreo.setOnClickListener {
             val intent = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
                 putExtra(Intent.EXTRA_EMAIL, arrayOf("javiersegoviamartinez@gmail.com"))

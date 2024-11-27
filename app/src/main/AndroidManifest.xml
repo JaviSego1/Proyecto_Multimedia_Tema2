@@ -24,6 +24,12 @@
             android:name=".ConfActivity"
             android:exported="false"/>
         <activity
+            android:name=".DadosActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".ConfiguracionActivity"
+            android:exported="false"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
