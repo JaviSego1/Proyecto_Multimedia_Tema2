@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Spinner
+import android.view.animation.AnimationUtils
 import com.example.pruebaintent.databinding.ActivityDadosBinding
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
@@ -20,17 +21,15 @@ class DadosActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDadosBinding.inflate(layoutInflater)  // Aquí usas el binding correcto
+        binding = ActivityDadosBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initEvent()
 
-        // Configurar el Spinner
         val duracionOptions = arrayOf("3 segundos", "6 segundos", "10 segundos")
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, duracionOptions)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerDuracion.adapter = spinnerAdapter
 
-        // Establecer un listener para el Spinner
         binding.spinnerDuracion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 duracionTirada = when (position) {
@@ -65,23 +64,22 @@ class DadosActivity : AppCompatActivity() {
         val schedulerExecutor = Executors.newSingleThreadScheduledExecutor()
         val msc = 1000
 
-        // Llamamos a lanzar los dados durante el tiempo seleccionado
-        val veces = duracionTirada / msc  // Determinar cuántas veces lanzar los dados
+        val veces = duracionTirada / msc
         for (i in 1..veces) {
             schedulerExecutor.schedule(
                 {
-                    throwDadoInTime()  // Lanzamos los tres dados.
+                    throwDadoInTime()
                 },
                 msc * i.toLong(), TimeUnit.MILLISECONDS
             )
         }
 
-        schedulerExecutor.schedule({ // El último hilo es mostrar el resultado.
+        schedulerExecutor.schedule({
             viewResult()
         },
-            msc * (veces + 2).toLong(), TimeUnit.MILLISECONDS)  // Tiempo adicional para mostrar el resultado
+            msc * (veces + 2).toLong(), TimeUnit.MILLISECONDS)
 
-        schedulerExecutor.shutdown()  // Ya no aceptamos más hilos.
+        schedulerExecutor.shutdown()
     }
 
     private fun throwDadoInTime() {
@@ -93,8 +91,15 @@ class DadosActivity : AppCompatActivity() {
         )
 
         sum = numDados.sum()  // Nos quedamos con la suma actual
-        for (i in 0..2)  // Cambiamos las imágenes a razón de los aleatorios.
+        for (i in 0..2) {
             selectView(imagViews[i], numDados[i])
+
+            // Cargar la animación de rotación
+            val rotateAnim = AnimationUtils.loadAnimation(this, R.anim.rotate_dice)
+
+            // Aplicar la animación al ImageView
+            imagViews[i].startAnimation(rotateAnim)
+        }
     }
 
     private fun selectView(imgV: ImageView, v: Int) {
