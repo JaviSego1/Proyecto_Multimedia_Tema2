@@ -16,38 +16,49 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/vaso" />
 
-    <ImageView
-        android:id="@+id/imagview_dado1"
+    <LinearLayout
+        android:id="@+id/linearLayoutDados"
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton"
-        app:srcCompat="@drawable/dado1" />
+        android:layout_marginTop="20dp">
 
-    <ImageView
-        android:id="@+id/imagview_dado2"
+        <ImageView
+            android:id="@+id/imagviewDado1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/dado1" />
+
+        <ImageView
+            android:id="@+id/imagviewDado2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:srcCompat="@drawable/dado1" />
+
+        <ImageView
+            android:id="@+id/imagviewDado3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:srcCompat="@drawable/dado1" />
+    </LinearLayout>
+
+    <!-- Spinner para seleccionar duración de la tirada -->
+    <Spinner
+        android:id="@+id/spinnerDuracion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        app:layout_constraintEnd_toEndOf="@+id/imagview_dado1"
-        app:layout_constraintTop_toBottomOf="@+id/imagview_dado1"
-        app:srcCompat="@drawable/dado1" />
-
-    <ImageView
-        android:id="@+id/imagview_dado3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        app:layout_constraintStart_toStartOf="@+id/imagview_dado2"
-        app:layout_constraintTop_toBottomOf="@+id/imagview_dado2"
-        app:srcCompat="@drawable/dado1" />
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutDados"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
     <TextView
-        android:id="@+id/txt_resultado"
+        android:id="@+id/txtResultado"
         android:layout_width="177dp"
         android:layout_height="73dp"
         android:textAlignment="center"
@@ -59,7 +70,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagview_dado3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutDados"
         app:layout_constraintVertical_bias="0.511" />
+
+    <Button
+        android:id="@+id/buttonVolver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver"
+        app:layout_constraintTop_toBottomOf="@+id/txtResultado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

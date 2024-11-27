@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorFondo">#2C2C2C</color>
+    <color name="colorFondo">#61E7FD</color>
     <color name="morado">#8123F8</color>
 
 </resources>
